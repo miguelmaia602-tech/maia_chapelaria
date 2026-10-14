@@ -95,7 +95,11 @@ function renderProducts(filter = "todos") {
 document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("menuBtn");
     const nav = document.getElementById("nav");
-    if (menuBtn && nav) menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
+    if (menuBtn && nav) menuBtn.addEventListener("click", () => {
+        const aberto = nav.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", String(aberto));
+        menuBtn.setAttribute("aria-label", aberto ? "Fechar menu de navegacao" : "Abrir menu de navegacao");
+    });
 
     document.querySelectorAll(".filter").forEach(button => {
         button.addEventListener("click", () => {

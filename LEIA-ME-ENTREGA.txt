@@ -1,0 +1,34 @@
+MAIA CHAPELARIA — ATIVIDADE DWS (4º BIMESTRE)
+
+Projeto pronto com 3 commits descritivos no histórico do Git.
+
+PASSO 1 — DESCOMPACTAR
+Extraia o ZIP inteiro. A pasta maia_chapelaria deve conter index.html e a pasta oculta .git.
+Nao copie apenas os arquivos de dentro: mantenha a pasta .git para preservar os commits.
+
+PASSO 2 — GITHUB DESKTOP
+1. File > Add local repository > Choose.
+2. Selecione a pasta maia_chapelaria EXTRAIDA deste ZIP.
+3. Clique na guia History para ver os 3 commits.
+4. Clique em Publish repository; nome sugerido: maia-chapelaria.
+5. DESMARQUE 'Keep this code private' para usar o GitHub Pages no repositorio publico.
+6. Publique e aguarde a conclusao do envio.
+
+PASSO 3 — GITHUB PAGES
+1. Abra o repositorio no site github.com.
+2. Settings > Pages > Build and deployment.
+3. Source: Deploy from a branch; Branch: main; Folder: /(root); Save.
+4. Aguarde alguns minutos. Abra o endereco indicado pelo GitHub Pages.
+
+LINKS PARA ENTREGAR
+Repositorio: https://github.com/SEU-USUARIO/maia-chapelaria
+Site: https://SEU-USUARIO.github.io/maia-chapelaria/
+Substitua SEU-USUARIO pelo seu usuario real. Confira os links apos a publicacao.
+
+ATENCAO
+GitHub Pages publica apenas HTML, CSS e JavaScript. PHP, formularios que
+exigem PHP e banco MySQL NAO funcionam no Pages. A pagina Contato do projeto
+original usa PHP, portanto o envio da mensagem nao funciona no Pages.
+As imagens externas podem depender de outros sites.
+Se ja tiver um repositorio anterior de Maia Chapelaria aberto no GitHub Desktop,
+use File > Add local repository para selecionar ESTA pasta, pois ela tem o historico preparado.
