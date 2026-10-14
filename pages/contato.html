@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contato — Maia Chapelaria</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            MAIA
+            <span>COUNTRY</span>
+        </a>
+
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
+
+        <nav id="nav">
+
+            <a href="index.html">Início</a>
+
+            <a href="historia.html">História</a>
+
+            <a href="produtos.html">Galeria</a>
+
+            <a href="contato.html">Contato</a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="page">
+
+        <section class="section-title">
+
+            <p class="eyebrow">
+                FALE COM A GENTE
+            </p>
+
+            <h1>
+                Fale sobre os chapéus
+            </h1>
+
+            <p>
+                Quer saber mais sobre a história dos chapéus? Envie uma mensagem para a Maia Chapelaria.
+            </p>
+
+        </section>
+
+
+        <section class="contact-grid">
+
+            <div class="contact-info">
+
+                <h2>
+                    Maia Chapelaria
+                </h2>
+
+                <p>
+                    🤠 Um espaço dedicado à história e à cultura dos chapéus.
+                </p>
+
+                <p>
+                    📱 (19) 98953-9764
+            
+                </p>
+
+                <p>
+                    ✉️ maiacountry33@gmail.com
+                </p>
+
+                <p>
+                    📍Campinas — SP
+                </p>
+
+            </div>
+
+
+       <form id="contactForm" class="form" action="processa_contato.php" method="POST">
+
+    <label>
+        Nome
+
+        <input 
+            type="text" 
+            name="nome"
+            placeholder="Seu nome" 
+            required 
+        >
+
+    </label>
+
+
+    <label>
+        E-mail
+
+        <input 
+            type="email"
+            name="email" 
+            placeholder="seuemail@email.com" 
+            required 
+        >
+
+    </label>
+
+
+    <label>
+        Mensagem
+
+        <textarea 
+            name="mensagem"
+            rows="6" 
+            placeholder="Digite sua mensagem" 
+            required
+        ></textarea>
+
+    </label>
+
+
+    <button 
+        type="submit" 
+        class="btn">
+
+        Enviar mensagem
+
+    </button>
+
+</form>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 Maia Chapelaria — História dos Chapéus
+        </p>
+
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>
