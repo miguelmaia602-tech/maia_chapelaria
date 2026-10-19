@@ -1,0 +1,28 @@
+MAIA CHAPELARIA — ATIVIDADE 2 (FETCH, JSON E DOM)
+
+API escolhida: ViaCEP (https://viacep.com.br/)
+Funcionalidade: na página Contato, buscar rua, bairro, cidade e UF ao digitar CEP.
+Onde está: pages/contato.html; js/script.js; css/style.css.
+
+PLANEJAMENTO DA PÁGINA 3:
+- API escolhida: ViaCEP.
+- Dado buscado: logradouro, bairro, localidade e UF de um CEP.
+- Elementos HTML atualizados: #cepRua, #cepBairro, #cepCidade, #cepEstado, #cepMensagem, #cepResultado.
+- Mensagem de erro: Não foi possível consultar o CEP agora. Verifique a conexão e tente novamente.
+
+TESTES PARA REALIZAR COM INTERNET:
+1) CEP 01001-000: deve aparecer um endereço em São Paulo/SP.
+2) CEP 123: deve aparecer “Digite um CEP válido com 8 números.”
+3) CEP 99999-999: deve aparecer CEP não encontrado (se a API responder normalmente).
+4) Sem conexão à internet: mensagem amigável de falha.
+
+PASSOS PARA ENTREGA:
+1) Extraia este ZIP.
+2) Abra index.html ou inicie o Live Server no VS Code.
+3) Acesse Contato e teste os CEPs com acesso à internet.
+4) No repositório GitHub da atividade anterior, atualize os arquivos do projeto (sem criar outro repositório).
+5) Registre um commit, por exemplo: "Atividade 2: consulta de CEP com ViaCEP".
+6) Aguarde o GitHub Pages atualizar e envie o link do repositório e o link do site.
+
+OBSERVAÇÃO: páginas PHP dependem de servidor PHP/MySQL e não executam no GitHub Pages.
+A consulta de CEP é HTML/CSS/JavaScript e funciona no GitHub Pages com internet.

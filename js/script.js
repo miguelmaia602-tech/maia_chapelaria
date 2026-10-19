@@ -110,3 +110,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     renderProducts();
 });
+
+
+// Atividade 2 — consulta de CEP com fetch, JSON e atualização do DOM.
+async function buscarCEP(cep) {
+    const mensagem = document.getElementById("cepMensagem");
+    const resultado = document.getElementById("cepResultado");
+    const botao = document.getElementById("cepButton");
+
+    // Limpa a consulta anterior para não mostrar endereço desatualizado.
+    resultado.hidden = true;
+    mensagem.textContent = "";
+    mensagem.className = "cep-mensagem";
+
+    const cepLimpo = cep.replace(/\D/g, "");
+    if (cepLimpo.length !== 8) {
+        mensagem.textContent = "Digite um CEP válido com 8 números.";
+        mensagem.classList.add("erro");
+        return;
+    }
+
+    botao.disabled = true;
+    mensagem.textContent = "Buscando endereço...";
+    try {
+        const resposta = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
+        if (!resposta.ok) {
+            throw new Error("Falha na consulta do CEP.");
+        }
+        const dados = await resposta.json();
+        if (dados.erro) {
+            mensagem.textContent = "CEP não encontrado. Confira os números e tente novamente.";
+            mensagem.classList.add("erro");
+            return;
+        }
+        document.getElementById("cepRua").textContent = dados.logradouro || "Não informado";
+        document.getElementById("cepBairro").textContent = dados.bairro || "Não informado";
+        document.getElementById("cepCidade").textContent = dados.localidade || "Não informado";
+        document.getElementById("cepEstado").textContent = dados.uf || "Não informado";
+        resultado.hidden = false;
+        mensagem.textContent = "Consulta realizada com sucesso!";
+        mensagem.classList.add("sucesso");
+    } catch (erro) {
+        mensagem.textContent = "Não foi possível consultar o CEP agora. Verifique a conexão e tente novamente.";
+        mensagem.classList.add("erro");
+        console.error("Erro ao buscar CEP:", erro);
+    } finally {
+        botao.disabled = false;
+    }
+}
+
+// Executa a consulta sem recarregar a página.
+document.addEventListener("DOMContentLoaded", () => {
+    const formularioCEP = document.getElementById("cepForm");
+    if (formularioCEP) {
+        formularioCEP.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+            buscarCEP(document.getElementById("cepInput").value);
+        });
+    }
+});

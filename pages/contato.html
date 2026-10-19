@@ -141,6 +141,30 @@
 
         </section>
 
+
+        <!-- Atividade 2: consulta de CEP com API pública ViaCEP -->
+        <section class="cep-section" aria-labelledby="titulo-cep">
+            <p class="eyebrow">CONSULTA DE ENDEREÇO</p>
+            <h2 id="titulo-cep">Consulte seu CEP</h2>
+            <p>Digite um CEP para conhecer o endereço usando a API pública ViaCEP.</p>
+            <form id="cepForm" class="cep-form">
+                <label for="cepInput">CEP</label>
+                <div class="cep-form-row">
+                    <input id="cepInput" name="cep" type="text" inputmode="numeric" maxlength="9" placeholder="Ex.: 01001-000" autocomplete="postal-code" required>
+                    <button class="btn" id="cepButton" type="submit">Buscar CEP</button>
+                </div>
+            </form>
+            <p id="cepMensagem" class="cep-mensagem" role="status" aria-live="polite"></p>
+            <div id="cepResultado" class="cep-resultado" hidden>
+                <h3>Endereço encontrado</h3>
+                <p><strong>Rua:</strong> <span id="cepRua"></span></p>
+                <p><strong>Bairro:</strong> <span id="cepBairro"></span></p>
+                <p><strong>Cidade:</strong> <span id="cepCidade"></span></p>
+                <p><strong>Estado:</strong> <span id="cepEstado"></span></p>
+            </div>
+            <small>Esta consulta exibe informações do endereço e não calcula frete.</small>
+        </section>
+
     </main>
 
 

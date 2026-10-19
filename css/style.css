@@ -729,3 +729,41 @@ footer {
     max-width: 700px;
     margin: auto;
 }
+
+
+/* ATIVIDADE 2 — consulta de CEP integrada ao visual original */
+.cep-section {
+    max-width: 950px;
+    margin: 55px auto 0;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px;
+}
+.cep-section h2 { color: var(--brown); font-size: 36px; margin-bottom: 12px; }
+.cep-section > p:not(.eyebrow) { color: #66554a; margin-bottom: 20px; }
+.cep-form label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 7px; }
+.cep-form-row { display: flex; gap: 12px; }
+.cep-form-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font: inherit;
+    background: white;
+}
+.cep-form-row button:disabled { opacity: .6; cursor: wait; }
+.cep-mensagem { margin: 15px 0; font-weight: 600; }
+.cep-mensagem.erro { color: #9c2525; }
+.cep-mensagem.sucesso { color: #246c39; }
+.cep-resultado { margin-top: 18px; background: white; border: 1px solid var(--border); border-radius: 6px; padding: 22px; }
+.cep-resultado[hidden] { display: none; }
+.cep-resultado h3 { color: var(--brown); margin-bottom: 10px; }
+.cep-resultado p { margin: 4px 0; }
+.cep-section small { display: block; margin-top: 15px; color: #66554a; }
+@media (max-width: 520px) {
+    .cep-section { padding: 24px 18px; }
+    .cep-section h2 { font-size: 30px; }
+    .cep-form-row { flex-direction: column; }
+}
