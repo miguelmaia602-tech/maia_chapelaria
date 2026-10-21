@@ -8,7 +8,22 @@
 <main class="page">
 <section class="section-title"><p class="eyebrow">ACERVO MAIA CHAPELARIA</p><h1>Galeria de Chapéus</h1><p>Os modelos que já estavam no seu projeto foram mantidos.</p></section>
 <div class="filters"><button class="filter active" data-filter="todos">Todos</button><button class="filter" data-filter="chapeus">Chapéus</button></div>
+<p id="apiMensagem" class="api-message" role="status" aria-live="polite">Carregando produtos...</p>
 <section class="products" id="products"></section>
+<section class="cadastro-produto">
+<h2>Cadastrar novo chapéu</h2>
+<p>Os produtos são armazenados no banco de dados da API Flask.</p>
+<form id="produtoForm" class="produto-form">
+<label for="produtoNome">Nome do chapéu</label>
+<input id="produtoNome" name="nome" type="text" maxlength="100" placeholder="Ex.: Chapéu Cowboy" required>
+<label for="produtoPreco">Preço (R$)</label>
+<input id="produtoPreco" name="preco" type="number" step="0.01" min="0" placeholder="199.90" required>
+<label for="produtoImagem">Endereço da imagem (opcional)</label>
+<input id="produtoImagem" name="imagem" type="url" placeholder="https://exemplo.com/chapeu.jpg">
+<button class="btn" id="produtoEnviar" type="submit">Cadastrar chapéu</button>
+<p id="produtoMensagem" role="status" aria-live="polite"></p>
+</form>
+</section>
 </main>
 <footer><p>© 2026 Maia Chapelaria — História dos Chapéus</p><p>Acervo de modelos country.</p></footer>
 <script src="../js/script.js"></script></body></html>

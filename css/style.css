@@ -767,3 +767,13 @@ footer {
     .cep-section h2 { font-size: 30px; }
     .cep-form-row { flex-direction: column; }
 }
+
+/* Cadastro da atividade 3 — acompanha o estilo existente da Maia Chapelaria */
+.cadastro-produto {max-width:760px; margin:45px auto; padding:30px; background:#f8f3e9; border-radius:16px; color:#34291c}
+.cadastro-produto h2 {margin:0 0 10px}
+.produto-form {display:grid; gap:12px; margin-top:20px}
+.produto-form label {font-weight:700}
+.produto-form input {width:100%; box-sizing:border-box; padding:12px; border:1px solid #bba992; border-radius:8px; font:inherit}
+.produto-form button {cursor:pointer; border:0; justify-self:start}
+.produto-form button:disabled {opacity:.6; cursor:wait}
+.api-message {text-align:center; padding:12px; margin:15px 0}

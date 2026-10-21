@@ -1,0 +1,34 @@
+DWS — ATIVIDADE 3 — MAIA CHAPELARIA
+
+Conteúdo mantido: site original, páginas, imagens e consulta de CEP (Atividade 2).
+Novidade: API Flask com SQLite, GET e POST para cadastrar e listar chapéus.
+
+PASSO A PASSO NO WINDOWS / VS CODE
+1. Extraia o ZIP e abra a pasta no VS Code.
+2. Abra Terminal > Novo Terminal.
+3. Execute: py -m pip install -r requirements.txt
+4. Execute: py app.py
+5. Acesse no navegador: http://127.0.0.1:5000/pages/produtos.html
+6. Veja os produtos, preencha o cadastro e clique em "Cadastrar chapéu".
+7. O produto será salvo no arquivo maia_produtos.db (SQLite) e aparecerá automaticamente na galeria.
+
+Se o comando 'py' não existir, use 'python' nos passos 3 e 4.
+O banco é gerado automaticamente na primeira execução.
+
+ROTAS DA API
+GET  /produtos  - lista os produtos do banco.
+POST /produtos  - cadastra {"nome":"Chapéu Novo", "preco":199.90, "imagem":""}.
+CORS está ativado com CORS(app).
+
+PLANEJAMENTO (PÁGINA 3 DO PDF)
+Tema: Maia Chapelaria — galeria de chapéus.
+Rota GET: /produtos.
+Rota POST: /produtos.
+Campos do formulário: nome, preço e endereço da imagem (opcional).
+Mensagem após cadastro: Chapéu cadastrado com sucesso!
+
+ENTREGA NO GITHUB
+Envie os arquivos deste ZIP para o repositório Maia Chapelaria e faça commit.
+ATENÇÃO: GitHub Pages hospeda HTML/CSS/JS, mas NÃO executa Python/Flask.
+Para demonstrar GET e POST funcionando, rode a API no computador com 'py app.py'.
+Se quiser que o site do GitHub Pages funcione com API online, será necessário hospedar o Flask em um servidor próprio e trocar a URL da API.

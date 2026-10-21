@@ -66,30 +66,97 @@ const products = [
 
 ];
 
+// Atividade 3: integração real com a API Flask usando GET e POST.
+// Quando o site é aberto pelo Flask, utiliza a mesma origem.
+// No Live Server (porta 5500), usa a API local na porta 5000.
+const API_PRODUTOS = window.location.port === "5000"
+    ? "/produtos" : "http://localhost:5000/produtos";
+
 function getCategoryName(category) {
     return category === "chapeus" ? "Chapéu" : category;
 }
 
+let produtosBanco = [];
+
 function renderProducts(filter = "todos") {
     const area = document.getElementById("products");
     if (!area) return;
-    const list = products.filter(p => p.categoria === "chapeus");
-    area.innerHTML = "";
-    list.forEach(product => {
+    area.replaceChildren();
+    const lista = produtosBanco.filter(p => filter === "todos" || p.categoria === filter);
+    lista.forEach(produto => {
         const card = document.createElement("article");
         card.className = "product history-product";
-        card.innerHTML = `
-            <div class="product-img">
-                <img src="${product.imagem}" alt="${product.nome}">
-                <span class="product-category">${getCategoryName(product.categoria)}</span>
-            </div>
-            <div class="product-info">
-                <p class="product-brand">MAIA CHAPELARIA · ACERVO</p>
-                <h3>${product.nome}</h3>
-                <p>Modelo presente na galeria histórica do projeto.</p>
-            </div>`;
+        const imgBox = document.createElement("div");
+        imgBox.className = "product-img";
+        if (produto.imagem) {
+            const img = document.createElement("img");
+            img.src = produto.imagem;
+            img.alt = produto.nome;
+            img.loading = "lazy";
+            imgBox.appendChild(img);
+        } else {
+            imgBox.textContent = "🤠";
+        }
+        const info = document.createElement("div");
+        info.className = "product-info";
+        const marca = document.createElement("p");
+        marca.className = "product-brand";
+        marca.textContent = "MAIA CHAPELARIA · ACERVO";
+        const titulo = document.createElement("h3");
+        titulo.textContent = produto.nome;
+        const preco = document.createElement("p");
+        preco.textContent = Number(produto.preco).toLocaleString("pt-BR", {style: "currency", currency: "BRL"});
+        info.append(marca, titulo, preco);
+        card.append(imgBox, info);
         area.appendChild(card);
     });
+}
+
+async function listarProdutos() {
+    const mensagem = document.getElementById("apiMensagem");
+    if (!mensagem) return;
+    try {
+        const resposta = await fetch(API_PRODUTOS, { method: "GET" });
+        if (!resposta.ok) throw new Error("Falha ao buscar produtos");
+        produtosBanco = await resposta.json();
+        const ativo = document.querySelector(".filter.active");
+        renderProducts(ativo ? ativo.dataset.filter : "todos");
+        mensagem.textContent = `${produtosBanco.length} produto(s) no banco de dados.`;
+    } catch (erro) {
+        console.error(erro);
+        mensagem.textContent = "Não foi possível carregar os produtos. Inicie a API Flask (python app.py).";
+    }
+}
+
+async function cadastrarProduto(evento) {
+    evento.preventDefault();
+    const form = evento.currentTarget;
+    const mensagem = document.getElementById("produtoMensagem");
+    const botao = document.getElementById("produtoEnviar");
+    const dados = {
+        nome: document.getElementById("produtoNome").value.trim(),
+        preco: Number(document.getElementById("produtoPreco").value),
+        imagem: document.getElementById("produtoImagem").value.trim()
+    };
+    botao.disabled = true;
+    mensagem.textContent = "Cadastrando...";
+    try {
+        const resposta = await fetch(API_PRODUTOS, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dados)
+        });
+        const resultado = await resposta.json();
+        if (!resposta.ok) throw new Error(resultado.erro || "Falha no cadastro");
+        form.reset();
+        mensagem.textContent = "Chapéu cadastrado com sucesso!";
+        await listarProdutos(); // Atualiza a tela sem recarregar.
+    } catch (erro) {
+        console.error(erro);
+        mensagem.textContent = `Erro: ${erro.message}`;
+    } finally {
+        botao.disabled = false;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -108,7 +175,9 @@ document.addEventListener("DOMContentLoaded", () => {
             renderProducts(button.dataset.filter);
         });
     });
-    renderProducts();
+    if (document.getElementById("products")) listarProdutos();
+    const formularioProduto = document.getElementById("produtoForm");
+    if (formularioProduto) formularioProduto.addEventListener("submit", cadastrarProduto);
 });
 
 
